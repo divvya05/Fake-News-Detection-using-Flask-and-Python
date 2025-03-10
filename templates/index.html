@@ -3,74 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Political News Bulletin</title>
+    <title>Fake News Detection</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-image: url("img2.jpeg"); /* Correct path to image */
+            height: 100vh; /* Ensure full viewport height */
+            background-size: cover; /* Cover the entire area */
+            background-position: center; /* Center the image */
+            color: white;
         }
+
         .container {
-            max-width: 800px;
-            margin: auto;
+            background-color: rgba(0, 0, 0, 0.5);
             padding: 20px;
-            background-color: #fff;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
         }
-        .menu {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
+
+        .sidebar {
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
         }
-        .menu a {
-            color: #fff;
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            color: white;
             text-decoration: none;
-            margin: 0 10px;
+            display: block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
-        .menu a:hover {
+
+        .sidebar a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        h2, h3 {
+            color: white;
+        }
+
+        /* Custom navbar styles */
+        .navbar {
+            background-color: #880000;
+        }
+
+        .navbar-brand, .navbar-nav .nav-link {
+            color: white;
+        }
+
+        .navbar-nav .nav-link:hover {
             color: #ccc;
         }
-        .team-member {
-            display: inline-block;
-            margin: 10px;
-            text-align: center;
-        }
-        .team-member img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 10px;
+
+        #introduction, #how-it-works, #classification-form, #history {
+            padding-top: 20px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="menu">
-        <a href="#">Home Page</a>
-        <a href="/output">Output Page</a>
-        <a href="/fake">Fake News</a>
-        <a href="/team">Team Members</a>
-        <a href="/about">About Project</a>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Fake News Detetection</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home Page <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/output">Output Page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/fake">Fake News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team">Team Members</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About Project</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
     <div class="container">
-        <h2>Welcome to Political News Bulletin</h2>
-        <p>This platform provides insights into political news from around the world, helping you stay informed and identify factual news.</p>
+        <div class="row">
+            <div class="col-md-3 sidebar">
+                <ul>
+                    <li><a href="#introduction"><i class="fas fa-info-circle"></i> Introduction</a></li>
+                    <li><a href="#how-it-works"><i class="fas fa-cogs"></i> How It Works</a></li>
+                    <li><a href="#classification-form"><i class="fas fa-file-alt"></i> Classification Form</a></li>
+                    <li><a href="#history"><i class="fas fa-history"></i> History</a></li>
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <section id="introduction">
+                    <h2>Welcome to Political News Bulletin</h2>
+                    <p>
+                        This platform provides insights into political news from around the world, helping you stay informed and identify factual news.
+                    </p>
+                </section>
 
-        <form method="post">
-            <textarea name="news_text" placeholder="Enter news text here" rows="5" cols="50"></textarea>
-            <br><br>
-            <input type="submit" value="Check">
-        </form>
-        <br>
-        <br>
+                <section id="how-it-works">
+                    <h3>How It Works</h3>
+                    <p>
+                        Users can input news text into our web interface. The input is then processed and analyzed by our trained model, which classifies the news as true or fake based on its content.
+                    </p>
+                </section>
 
-        {% if prediction %}
-            <p>Prediction: {{ prediction }}</p>
-        {% endif %}
+                <section id="classification-form">
+                    <h3>Classify News</h3>
+                    <form method="post">
+                        <textarea name="news_text" placeholder="Enter news text here" rows="5" cols="70"></textarea>
+                        <br><br>
+                        <input type="submit" value="Check">
+                    </form>
+                    {% if prediction %}
+                        <p>Prediction: {{ prediction }}</p>
+                    {% endif %}
+                </section>
+
+                <section id="history">
+                    <h3>History</h3>
+                    <ul>
+                        {% for entry in history %}
+                            <li>
+                                <b>News Text:</b> {{ entry['news_text'] }}<br>
+                                <b>Prediction:</b> {{ entry['prediction'] }}<br>
+                                <b>Timestamp:</b> {{ entry['timestamp'] }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </section>
+            </div>
+        </div>
     </div>
 
-    <!-- Add more content or pages as needed -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>

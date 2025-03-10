@@ -5,11 +5,196 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Project</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background-image: url("img2.jpeg");
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px; /* Add some top margin */
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 20px;
+            height: fit-content; /* Adjust the height according to content */
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #880000;
+        }
+
+        h2, h3 {
+            color: white;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        /* Add some margin to the content to prevent overlapping with the sidebar */
+        #about-website, #working, #key-features, #advantages, #limitations, #future-scope, #step-by-step {
+            padding-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Custom navbar styles */
+        .navbar {
+            background-color: #880000;
+        }
+
+        .navbar-brand, .navbar-nav .nav-link {
+            color: white;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ccc;
+        }
+    </style>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Fake News Detection</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/output">Output</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team">Team</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/about">About <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
-        <h2>About Our Project</h2>
-        <p>This project aims to provide a platform for identifying and classifying political news as true or fake, helping users navigate complex information landscapes.</p>
+        <div class="row">
+            <div class="col-md-3 sidebar">
+                <ul>
+                    <li><a href="#about-website"><i class="fas fa-info-circle"></i> About the Website</a></li>
+                    <li><a href="#working"><i class="fas fa-cogs"></i> Working</a></li>
+                    <li><a href="#key-features"><i class="fas fa-star"></i> Key Features</a></li>
+                    <li><a href="#advantages"><i class="fas fa-thumbs-up"></i> Advantages</a></li>
+                    <li><a href="#limitations"><i class="fas fa-times-circle"></i> Limitations</a></li>
+                    <li><a href="#future-scope"><i class="fas fa-rocket"></i> Future Scope</a></li>
+                    <li><a href="#step-by-step"><i class="fas fa-list-ol"></i> Step-by-Step Guide</a></li>
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <section id="about-website">
+                    <h2>About the Website</h2>
+                    <p>
+                        Fake News Detection System is a dedicated platform committed to identifying and debunking fake news stories circulating online. Our team of experts uses advanced technology and research to verify the authenticity of news articles and reports. We offer services such as:
+                    </p>
+                    <ul>
+                        <li><i class="fas fa-chevron-circle-right"></i> Credibility Assessment</li>
+                        <li><i class="fas fa-chevron-circle-right"></i> Media Literacy Workshops</li>
+                        <li><i class="fas fa-chevron-circle-right"></i> Customized Consultation</li>
+                    </ul>
+                </section>
+
+                <section id="working">
+                    <h3>Working</h3>
+                    <p>
+                        Our system employs machine learning techniques to classify news articles as either true or fake. Users can input news text, which is then processed and analyzed by our trained model to determine its authenticity.
+                    </p>
+                </section>
+
+                <section id="key-features">
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> News Classification: Classifies news articles as true or fake using a trained machine learning model.</li>
+                        <li><i class="fas fa-check-circle"></i> Web Interface: User-friendly interface for inputting news text and receiving classification results.</li>
+                        <li><i class="fas fa-check-circle"></i> Model Evaluation: Performance metrics like accuracy and classification reports.</li>
+                        <li><i class="fas fa-check-circle"></i> Team and About Pages: Information about the team and project details.</li>
+                    </ul>
+                </section>
+
+                <section id="advantages">
+                    <h3>Advantages</h3>
+                    <ul>
+                        <li><i class="fas fa-plus-circle"></i> Quick and accurate assessment of news authenticity.</li>
+                        <li><i class="fas fa-plus-circle"></i> Helps users avoid spreading misinformation.</li>
+                        <li><i class="fas fa-plus-circle"></i> Promotes media literacy and critical thinking.</li>
+                    </ul>
+                </section>
+
+                <section id="limitations">
+                    <h3>Limitations</h3>
+                    <ul>
+                        <li><i class="fas fa-minus-circle"></i> Model accuracy depends on the quality and quantity of training data.</li>
+                        <li><i class="fas fa-minus-circle"></i> May not be effective against sophisticated or novel forms of fake news.</li>
+                        <li><i class="fas fa-minus-circle"></i> Requires regular updates and maintenance to remain effective.</li>
+                    </ul>
+                </section>
+
+                <section id="future-scope">
+                    <h3>Future Scope</h3>
+                    <ul>
+                        <li><i class="fas fa-arrow-right"></i> Enhance model accuracy with advanced machine learning techniques.</li>
+                        <li><i class="fas fa-arrow-right"></i> Expand the web interface with user authentication and news article storage.</li>
+                        <li><i class="fas fa-arrow-right"></i> Incorporate real-time news feeds and automated analysis.</li>
+                    </ul>
+                </section>
+
+                <section id="step-by-step">
+                    <h3>Step-by-Step Guide to Use Our FND System</h3>
+                    <ol>
+                        <li>Clone the repository.</li>
+                        <li>Install required libraries using `pip install -r requirements.txt`.</li>
+                        <li>Run the Flask application using `python app.py`.</li>
+                        <li>Access the application at `http://127.0.0.1:5000`.</li>
+                    </ol>
+                </section>
+            </div>
+        </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>

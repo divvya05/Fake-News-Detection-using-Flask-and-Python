@@ -5,6 +5,7 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 import nltk
+from datetime import datetime
 
 # Download required NLTK data if not already downloaded
 nltk.download('punkt')
@@ -26,6 +27,9 @@ with open('fake_news_model.pkl', 'rb') as f:
     loaded_model = pickle.load(f)
 with open('vectorizer.pkl', 'rb') as f:
     loaded_vectorizer = pickle.load(f)
+
+# Initialize history list
+history = []
 
 # Function to preprocess text
 def preprocess_text(text):
@@ -60,9 +64,14 @@ def index():
     if request.method == 'POST':
         news_text = request.form.get('news_text')
         prediction = classify_news(news_text)
-        return render_template('index.html', prediction=prediction)
-    return render_template('index.html')
-
+        # Store the classification result in history
+        history.append({
+            'news_text': news_text,
+            'prediction': prediction,
+            'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        })
+        return render_template('index.html', prediction=prediction, history=history)
+    return render_template('index.html', history=history)
 
 @app.route('/output')
 def output():
@@ -84,13 +93,7 @@ def team():
 def about():
     return render_template('about.html')
 
-@app.route('/classify', methods=['POST'])
-def classify():
-    news_text = request.form.get('news_text')
-    prediction = classify_news(news_text)
-    return render_template('index.html', prediction=prediction)
-
-
+# Removed the /classify route as it's redundant with the POST method in the index route
 
 if __name__ == '__main__':
     app.run(debug=True)

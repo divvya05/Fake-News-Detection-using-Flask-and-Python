@@ -3,14 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fake News Examples</title>
+    <title>News Examples</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background-image: url("img2.jpeg");
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px; /* Add some top margin */
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 20px;
+            height: fit-content; /* Adjust the height according to content */
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        h2, h3 {
+            color: white;
+        }
+
+        /* Custom navbar styles */
+        .navbar {
+            background-color: #880000;
+        }
+
+        .navbar-brand, .navbar-nav .nav-link {
+            color: white;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ccc;
+        }
+    </style>
 </head>
 <body>
-    <h2>Fake News Examples</h2>
-    <ul>
-        {% for headline in headlines %}
-            <li>{{ headline }}</li>
-        {% endfor %}
-    </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Fake News Detection</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/output">Stats</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">News Collection <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/team">Our Team</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About Website</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 sidebar">
+                <ul>
+                    <li><a href="#fake-news"><i class="fas fa-newspaper"></i> Fake News</a></li>
+                    <li><a href="#true-news"><i class="fas fa-newspaper"></i> True News</a></li>
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <section id="fake-news" >
+                    <h2>Fake News Examples</h2>
+                    <section id="fake-news" style="display: none;">
+                        <h2>Fake News Examples</h2>
+                        {% for news in fake_news %}
+                        <h3>{{ news.title }}</h3>
+                        <p>{{ news.text }}</p>
+                        {% endfor %}
+                        <ul>
+                            <li>"Breaking News: A new cryptocurrency is guaranteed to make you a millionaire."</li>
+                            <li>"Invest in CryptoX today and earn 100% returns within a week!"</li>
+                            <li>"AI-powered investment platform promises guaranteed returns with zero risk."</li>
+                            <li>"New AI-driven cryptocurrency trading bot guarantees daily profits."</li>
+                            <li>"Influencer on TikTok reveals secret to making thousands overnight with a new investment opportunity."</li>
+                            <li>"Facebook post claims a new app can turn your phone into a cryptocurrency mining machine."</li>
+                            <li>"New study reveals a miracle cure for all diseases using a simple home remedy."</li>
+                            <li>"Drinking a specific brand of juice daily can cure cancer."</li>
+                        </ul>
+                    </section>
+                    {% for news in fake_news %}
+                        <h3>{{ news.title }}</h3>
+                        <p>{{ news.text }}</p>
+                    {% endfor %}
+                </section>
+
+                <section id="true-news" style="display: none;">
+                    <h2>True News Examples</h2>
+                    {% for news in true_news %}
+                        <h3>{{ news.title }}</h3>
+                        <p>{{ news.text }}</p>
+                    {% endfor %}
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#fake-news').show();
+            $('#true-news').hide();
+
+            $('.sidebar a').click(function(e) {
+                e.preventDefault();
+                var target = $(this).attr('href');
+                if (target === '#fake-news') {
+                    $('#fake-news').show();
+                    $('#true-news').hide();
+                } else if (target === '#true-news') {
+                    $('#true-news').show();
+                    $('#fake-news').hide();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
